@@ -15,15 +15,18 @@ class Settings extends React.Component {
     cityToAdd: "",
     cityToRemove: "",
     errorCaught: false,
-    cityIsAdded: false
+    cityIsAdded: false,
+    isLoading: false
   };
   addCity = async e => {
+    this.setState({
+      isLoading: true
+    });
     e.preventDefault();
     const responseFromApi = await getWeatherFromCity(
       this.state.cityToAdd,
       API_TOKEN
     );
-    console.log("response from api :", responseFromApi);
     if (responseFromApi !== "ERROR") {
       this.setState({
         errorCaught: false
@@ -45,11 +48,12 @@ class Settings extends React.Component {
         }
       };
       this.props.addCity(newCity);
-      this.setState({ cityToAdd: "", cityIsAdded: true });
+      this.setState({ cityToAdd: "", cityIsAdded: true, isLoading: false });
       console.log("CITY ADDED");
     } else if (responseFromApi === "ERROR") {
       this.setState({
-        errorCaught: true
+        errorCaught: true,
+        isLoading: false
       });
     }
   };
@@ -79,6 +83,7 @@ class Settings extends React.Component {
         <Header title="Settings" />
         <div className="settings-content">
           <div className="settings-content-back">
+            <span>{this.state.isLoading ? "Loading ..." : null}</span>
             <Link to="/">
               <button>
                 <div className="settings-content-back-button">
