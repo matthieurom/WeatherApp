@@ -18,3 +18,10 @@ export function removeCity(city) {
     payload: city
   };
 }
+
+export function updatePageIndex(index) {
+  return {
+    type: "UPDATE_PAGE",
+    payload: index
+  };
+}

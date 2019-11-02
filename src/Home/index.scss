@@ -10,6 +10,7 @@
   &-content {
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 
     &-input {
       width: 100%;
@@ -100,5 +101,34 @@
   border-radius: 5px;
   &:not(:last-child) {
     margin-bottom: 1rem;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  font-size: 1rem;
+  .btn-page {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    transition: all 0.15s;
+    width: 27px;
+    height: 27px;
+    // color: white;
+    font-weight: 500;
+    background-color: $color-primary;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+    &:hover {
+      background-color: rgba($color-primary, 0.4);
+    }
+    &-selected {
+      background-color: rgba($color-primary, 0.4);
+    }
   }
 }

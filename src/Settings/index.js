@@ -14,7 +14,8 @@ class Settings extends React.Component {
   state = {
     cityToAdd: "",
     cityToRemove: "",
-    errorCaught: false
+    errorCaught: false,
+    cityIsAdded: false
   };
   addCity = async e => {
     e.preventDefault();
@@ -44,7 +45,7 @@ class Settings extends React.Component {
         }
       };
       this.props.addCity(newCity);
-      this.setState({ cityToAdd: "" });
+      this.setState({ cityToAdd: "", cityIsAdded: true });
       console.log("CITY ADDED");
     } else if (responseFromApi === "ERROR") {
       this.setState({
@@ -55,7 +56,7 @@ class Settings extends React.Component {
 
   removeCity = () => {
     this.props.removeCity(this.state.cityToRemove);
-    this.setState({ cityToRemove: "" });
+    this.setState({ cityToRemove: "", cityIsAdded: false });
     console.log("REMOVE : ", this.state.cityToRemove);
   };
 
@@ -88,7 +89,15 @@ class Settings extends React.Component {
             </Link>
           </div>
           <div className="settings-content-add">
-            <span className="settings-content-title">Add a city</span>
+            <div>
+              {this.state.cityIsAdded ? (
+                <span className="settings-content-added">
+                  {this.props.cities[this.props.cities.length - 1].name} has
+                  been added
+                </span>
+              ) : null}
+              <span className="settings-content-title">Add a city</span>
+            </div>
             <form onSubmit={this.addCity}>
               <input
                 placeholder="Enter a city"

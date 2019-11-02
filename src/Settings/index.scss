@@ -30,8 +30,18 @@
 
     &-title {
       border-bottom: 1px solid $color-grey;
+      display: inline-block;
       margin-bottom: 1rem;
-      width: 50rem;
+      width: 60rem;
+    }
+
+    &-added {
+      font-size: 0.8rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+      color: $color-primary;
+      font-weight: 800;
+      display: block;
     }
 
     &-error {
@@ -48,7 +58,8 @@
         align-content: flex-end;
       }
       input {
-        width: 48rem;
+        width: 60rem;
+        box-sizing: border-box;
         border-radius: 5px;
         outline: none;
         padding: 1rem 1rem;
@@ -76,9 +87,11 @@
         ul {
           border: 1px solid #181818;
           border-radius: 5px;
-          width: 50rem;
+          width: 60rem;
           box-shadow: 0 5px 5px rgba($color-black, 0.1);
           max-height: 260px;
+          box-sizing: border-box;
+          overflow: hidden;
           li {
             cursor: pointer;
             transition: all 0.2s ease;
@@ -91,6 +104,7 @@
             }
             .city-selected {
               background-color: $color-primary;
+              overflow: hidden;
             }
           }
         }
