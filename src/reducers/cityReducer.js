@@ -1,5 +1,5 @@
 const initialState = {
-  pageSize: 2,
+  pageSize: 5,
   pageIndex: 1,
   cities: [
     {
